@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor "Cualquier Usuario" as U
+actor "Sistema de Notificaciones" as SN <<Secondary>>
+
+rectangle "Módulo: Búsqueda y Reservas" {
+    usecase "UC13: Buscar libro por criterios" as UC13
+    usecase "UC14: Reservar libro no disponible" as UC14
+    usecase "UC15: Cancelar reserva" as UC15
+}
+
+U --> UC13
+U --> UC14
+U --> UC15
+
+' Notificación
+UC14 -- SN : (aviso disponibilidad)
+@enduml

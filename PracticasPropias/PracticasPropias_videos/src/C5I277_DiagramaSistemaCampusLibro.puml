@@ -1,0 +1,74 @@
+@startuml
+skinparam actorStyle awesome
+left to right direction
+
+actor "Bibliotecario" as Bib
+actor "Usuario" as U
+actor "Estudiante" as Est
+actor "Profesor" as Prof
+actor "Sistema de Notificaciones" as SN <<System>>
+
+' Herencia de Actores
+Est --|> U
+Prof --|> U
+
+package "Gestión de Usuarios" {
+  usecase "UC01: Registrar usuario" as UC01
+  usecase "UC02: Modificar usuario" as UC02
+  usecase "UC03: Eliminar usuario" as UC03
+  usecase "UC04: Consultar historial" as UC04
+}
+
+package "Gestión de Catálogo" {
+  usecase "UC05: Agregar libro" as UC05
+  usecase "UC06: Actualizar libro" as UC06
+  usecase "UC07: Marcar perdido/deteriorado" as UC07
+  usecase "UC08: Gestionar ejemplares" as UC08
+}
+
+package "Préstamos y Devoluciones" {
+  usecase "UC09: Realizar préstamo" as UC09
+  usecase "UC10: Registrar devolución" as UC10
+  usecase "UC11: Renovar préstamo" as UC11
+  usecase "UC12: Pagar multa" as UC12
+}
+
+package "Búsqueda y Reservas" {
+  usecase "UC13: Buscar libro" as UC13
+  usecase "UC14: Reservar libro" as UC14
+  usecase "UC15: Cancelar reserva" as UC15
+}
+
+package "Reportes y Autenticación" {
+  usecase "UC16-18: Generar Reportes" as UC_Rep
+  usecase "UC19: Iniciar sesión" as UC19
+  usecase "UC20: Recuperar contraseña" as UC20
+}
+
+' Relaciones Bibliotecario
+Bib --> UC01
+Bib --> UC02
+Bib --> UC03
+Bib --> UC04
+Bib --> UC05
+Bib --> UC06
+Bib --> UC07
+Bib --> UC08
+Bib --> UC09
+Bib --> UC10
+Bib --> UC_Rep
+
+' Relaciones Usuario General (Estudiante/Profesor)
+U --> UC13
+U --> UC11
+U --> UC14
+U --> UC15
+U --> UC19
+U --> UC20
+
+' Relaciones con Sistema Externo
+UC09 ..> SN : <<include>>
+UC14 ..> SN : <<include>>
+UC10 <.. UC12 : <<extend>> (si hay retraso)
+
+@enduml

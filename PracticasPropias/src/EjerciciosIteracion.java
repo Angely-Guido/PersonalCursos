@@ -197,10 +197,8 @@ public class EjerciciosIteracion {
             for (int j = 0; j <= i; j++) {
                 System.out.print("* ");
             }
-            System.out.println("");
-
+            System.out.println();
         }
-
     }
 
     public void ejercicio15() {
@@ -230,10 +228,132 @@ public class EjerciciosIteracion {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
 
-                System.out.print("("+i+",");
-                System.out.print(j+")");
-
+                System.out.print("(" + i + ",");
+                System.out.print(j + ")");
             }
         }
     }
-}
+    public void ejercicio17() {
+
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("For i");
+            System.out.println(i);
+            for (int j = 1; j < i; j++) {
+                System.out.println("  for j");
+                System.out.print("  " + j);
+            }
+        }
+    }
+    public void ejercicio18() {
+
+        int n = 0;
+
+        System.out.println("Ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == j || i + j == n + 1) {
+                    System.out.print("*");
+                } else {
+                    System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void ejercicio19() {
+
+        int n = 0;
+
+        System.out.println("ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n || i == j || i + j == n + 1) {
+
+                        System.out.print(" * ");
+                    } else {
+                        System.out.print("   ");
+                    }
+            }
+            System.out.println();
+        }
+    }
+
+    public void ejercicio20(){
+        int n = 0;
+
+        System.out.println("ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n) {
+                    System.out.print(" * ");
+                } else {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void ejericio21(){
+        int n = 0;
+
+        System.out.println("ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (i == 1 || i == n || j == 1 || j == n || (i==j && i+j==n+1 )) {
+                    System.out.print(" * ");
+                } else {
+                    System.out.print("   ");
+                }
+            }
+            System.out.println();
+        }
+
+    }
+
+    public void ejercicio22() {
+        int n = 0;
+        double proceso = 1;
+
+        System.out.println("ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if( i == (n+1)/2 ||j == (n+1)/2){
+                    System.out.print(" * ");
+                }
+                else{
+                    System.out.print("   ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public void ejercicio23(){
+        int n = 0;
+        double proceso = 1;
+
+        System.out.println("ingrese el tamaño: ");
+        n = sc.nextInt();
+
+        for (int i = 1; i < (n*2)-1 ; i++) {
+            System.out.print("*");
+            for (int j = 1; j < n-1 ; j++) {
+                System.out.print(" ");
+                }
+            }
+            System.out.println();
+        }
+
+    }

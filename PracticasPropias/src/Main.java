@@ -36,7 +36,21 @@ public class Main {
         //eje.ejercicio13();
         //eje.ejercicio14();
         //eje.ejercicio15();
-        eje.ejercicio16();
+        //eje.ejercicio16();
+        //eje.ejercicio17();
+        // eje.ejercicio18();
+        //eje.ejercicio19();
+        //eje.ejercicio20();
+        //eje.ejericio21();
+        //eje.ejercicio22();
+        //eje.ejercicio23();
+
+        EstructurasDeDatos po = new EstructurasDeDatos();
+        //po.arrays();
+        //po.ejercicioarray1();
+
+        FuncionesAlcance pw = new FuncionesAlcance();
+        pw.prueba1("Bonito", "Feo");
 
 
     }

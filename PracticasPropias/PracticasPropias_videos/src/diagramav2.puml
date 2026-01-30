@@ -1,0 +1,78 @@
+@startuml
+' --- CONFIGURACIÓN DE APARIENCIA ---
+left to right direction
+skinparam roundcorner 20
+skinparam shadowing false
+skinparam actorStyle awesome
+
+' Paleta de colores profesional
+skinparam usecase {
+    BackgroundColor #F0F7FF
+    BorderColor #0056b3
+    ArrowColor #0056b3
+}
+
+skinparam package {
+    BackgroundColor #FFFFFF
+    BorderColor #D1D1D1
+    FontStyle bold
+}
+
+' --- ACTORES ---
+actor "Bibliotecario" as B
+actor "Usuario\n(General)" as U
+actor "Estudiante" as E
+actor "Profesor" as P
+actor "Sistema de\nNotificaciones" as SN <<Secondary>>
+
+' Herencia de Actores (Simplifica las líneas)
+E --|> U
+P --|> U
+
+' --- SISTEMA CAMPUSLIBRO ---
+rectangle "Sistema de Gestión Biblioteca CampusLibro" {
+
+    package "Módulo Administrativo (Usuarios y Libros)" {
+        usecase "UC01-04: Gestión de Usuarios" as UC_User
+        usecase "UC05-08: Gestión de Catálogo y Ejemplares" as UC_Book
+    }
+
+    package "Módulo de Operaciones (Préstamos, Reservas y Multas)" {
+        usecase "UC09: Realizar préstamo" as UC09
+        usecase "UC10: Registrar devolución" as UC10
+        usecase "UC11: Renovar préstamo" as UC11
+        usecase "UC12: Pagar multa por retraso" as UC12
+        usecase "UC13: Buscar libro por criterios" as UC13
+        usecase "UC14: Reservar libro no disponible" as UC14
+        usecase "UC15: Cancelar reserva" as UC15
+    }
+
+    package "Módulo de Soporte (Reportes y Seguridad)" {
+        usecase "UC16-18: Generar Reportes y Estadísticas" as UC_Rep
+        usecase "UC19: Iniciar sesión" as UC19
+        usecase "UC20: Recuperar contraseña" as UC20
+    }
+}
+
+' --- CONEXIONES BIBLIOTECARIO ---
+B --> UC_User
+B --> UC_Book
+B --> UC09
+B --> UC10
+B --> UC_Rep
+B --> UC19
+
+' --- CONEXIONES USUARIO (ESTUDIANTE/PROFESOR) ---
+U --> UC11
+U --> UC13
+U --> UC14
+U --> UC15
+U --> UC19
+U --> UC20
+
+' --- LÓGICA INTERNA Y ACTORES SECUNDARIOS ---
+UC10 <.. UC12 : <<extend>>
+UC09 -- SN
+UC14 -- SN
+
+@enduml

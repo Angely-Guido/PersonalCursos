@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor "Bibliotecario" as B
+actor "Estudiante / Profesor" as U
+actor "Sistema de Notificaciones" as SN <<Secondary>>
+
+rectangle "Módulo: Préstamos y Devoluciones" {
+    usecase "UC09: Realizar préstamo" as UC09
+    usecase "UC10: Registrar devolución" as UC10
+    usecase "UC11: Renovar préstamo" as UC11
+    usecase "UC12: Pagar multa por retraso" as UC12
+}
+
+' Relaciones
+B --> UC09
+B --> UC10
+U --> UC11
+
+' Lógica de negocio
+UC10 <.. UC12 : <<extend>> (si hay retraso)
+UC09 -- SN : (notificación automática)
+@enduml

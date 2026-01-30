@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor "Cualquier Actor" as A
+
+rectangle "Módulo: Autenticación" {
+    usecase "UC19: Iniciar sesión" as UC19
+    usecase "UC20: Recuperar contraseña" as UC20
+}
+
+A --> UC19
+A --> UC20
+@enduml

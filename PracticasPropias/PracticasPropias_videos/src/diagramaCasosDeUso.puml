@@ -1,0 +1,87 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Bibliotecario" as B
+actor "Usuario" as U
+actor "Estudiante" as E
+actor "Profesor" as P
+actor "Sistema de Notificaciones" as SN <<Secondary>>
+
+' Herencia de Actores
+E --|> U
+P --|> U
+
+package "Sistema de Gestión CampusLibro" {
+
+    package "Gestión de Usuarios" {
+        usecase "UC01: Registrar nuevo usuario" as UC01
+        usecase "UC02: Modificar datos de usuario" as UC02
+        usecase "UC03: Eliminar usuario" as UC03
+        usecase "UC04: Consultar historial de préstamos" as UC04
+    }
+
+    package "Gestión de Libros" {
+        usecase "UC05: Agregar nuevo libro al catálogo" as UC05
+        usecase "UC06: Actualizar información de libro" as UC06
+        usecase "UC07: Marcar libro como perdido/deteriorado" as UC07
+        usecase "UC08: Gestionar ejemplares múltiples" as UC08
+    }
+
+    package "Préstamos y Devoluciones" {
+        usecase "UC09: Realizar préstamo" as UC09
+        usecase "UC10: Registrar devolución" as UC10
+        usecase "UC11: Renovar préstamo" as UC11
+        usecase "UC12: Pagar multa por retraso" as UC12
+    }
+
+    package "Búsqueda y Reservas" {
+        usecase "UC13: Buscar libro por criterios" as UC13
+        usecase "UC14: Reservar libro no disponible" as UC14
+        usecase "UC15: Cancelar reserva" as UC15
+    }
+
+    package "Reportes" {
+        usecase "UC16: Generar reporte de libros más solicitados" as UC16
+        usecase "UC17: Generar reporte de morosidad" as UC17
+        usecase "UC18: Generar estadísticas de uso" as UC18
+    }
+
+    package "Autenticación" {
+        usecase "UC19: Iniciar sesión" as UC19
+        usecase "UC20: Recuperar contraseña" as UC20
+    }
+}
+
+' Asociaciones del Bibliotecario
+B --> UC01
+B --> UC02
+B --> UC03
+B --> UC04
+B --> UC05
+B --> UC06
+B --> UC07
+B --> UC08
+B --> UC09
+B --> UC10
+B --> UC16
+B --> UC17
+B --> UC18
+B --> UC19
+
+' Asociaciones de Usuario (Estudiante/Profesor)
+U --> UC11
+U --> UC13
+U --> UC14
+U --> UC15
+U --> UC19
+U --> UC20
+
+' Relaciones entre Casos de Uso
+UC10 <.. UC12 : <<extend>>
+
+' Conexiones a Actor Secundario (Líneas sólidas, sin etiquetas de inclusión)
+UC09 -- SN
+UC14 -- SN
+@enduml

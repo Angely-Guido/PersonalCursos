@@ -1,0 +1,18 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor "Bibliotecario" as B
+
+rectangle "Módulo: Gestión de Libros" {
+    usecase "UC05: Agregar nuevo libro al catálogo" as UC05
+    usecase "UC06: Actualizar información de libro" as UC06
+    usecase "UC07: Marcar libro como perdido/deteriorado" as UC07
+    usecase "UC08: Gestionar ejemplares múltiples" as UC08
+}
+
+B --> UC05
+B --> UC06
+B --> UC07
+B --> UC08
+@enduml
