@@ -10,6 +10,8 @@ public class RepositorioProducto {
     private RepositorioProducto(){
         this.productos = new ArrayList<>();
 
+        productos.add(new Producto(1, "Arroz", 1200, 4));
+        productos.add(new Producto(2, "Aceite", 1300, 3));
     }
         public static synchronized RepositorioProducto getInstance(){
         if (instance == null){
@@ -22,7 +24,7 @@ public class RepositorioProducto {
     public String agregarProducto(int id, String nombre, double precio, int cantidad){
         Producto producto = new Producto(id,nombre, precio, cantidad);
         productos.add(producto);
-        return "Agregado correctamente";
+        return producto.toString();
     }
 
     public String verProductos(){
@@ -36,7 +38,7 @@ public class RepositorioProducto {
                         "\nNOMBRE: " + producto.getNombreProduct() +
                         "\nPRECIO: " + producto.getPrecio()+
                         "\nSTOCK: " + producto.getStock()+
-                " \n ";
+                "\n °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°";
             }
         }
         return lista;

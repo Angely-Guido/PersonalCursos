@@ -1,4 +1,4 @@
-public class Primitivo {
+public class PrimitivoEnteros {
 
     public static void main(String[] args) {
         byte numeroByte = 127;
@@ -32,7 +32,5 @@ public class Primitivo {
         
         var numeroVar = 127;
         System.out.println("numeroVar = " + numeroVar);
-
-
     }
 }
