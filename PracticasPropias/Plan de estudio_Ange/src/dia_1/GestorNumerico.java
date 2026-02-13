@@ -20,7 +20,7 @@ public class GestorNumerico {
         }
     }// end metodo
 
-    public static String formatearString(int n) {
+    public static String formatearString(int n) throws IllegalArgumentException {
         if (n < 0) {
             throw new IllegalArgumentException("Error: Negativo no permitido -> " + n);
         } else {
