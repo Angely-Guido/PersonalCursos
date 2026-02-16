@@ -1,4 +1,5 @@
 package ejerciciosString;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -36,14 +37,13 @@ public class Calentamiento {
         }
     }// end extractorDeCorreos
 
-    public boolean analistaDeArchivos(){
+    public boolean analistaDeArchivos() {
         System.out.println("Ingrese el nombre del archivo:");
         String archivo = sc.nextLine();
 
-        if(archivo.endsWith(".png") || archivo.endsWith(".jpg")) {
-
+        if (archivo.endsWith(".png") || archivo.endsWith(".jpg")) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }//end analistaDeArchivos
@@ -55,7 +55,7 @@ public class Calentamiento {
         System.out.println("Palabra a censurar:");
         String mala = sc.nextLine();
 
-        String censurada ="";
+        String censurada = "";
         for (int i = 0; i < mala.length(); i++) {
             censurada += "*";
         }
@@ -64,6 +64,4 @@ public class Calentamiento {
         System.out.println(palabraCensurada);
 
     }//end buscadorDePalabrasProhibidas
-
-
 }

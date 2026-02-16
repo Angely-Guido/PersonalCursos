@@ -3,6 +3,7 @@ package dia_2;
 public class Ejercicios {
 
     public static void main(String[] args) {
+
 /*
         try {
             System.out.println(sumaHasta(8));
@@ -17,14 +18,27 @@ public class Ejercicios {
             System.out.println(e.getMessage());
         }
         /
- */
+
         try {
             System.out.println(potencia(2, -9));
         }catch (IllegalArgumentException e){
             System.out.println(e.getMessage());
         }
+        */
+
+        //System.out.println(Ejercicios.desplazarMayuscula('Y', 53));
+        //System.out.println(Ejercicios.pirámideInvertida(4, "*"));
+        //System.out.println(Ejercicios.linea(4, '*'));
+        //System.out.println(Ejercicios.lineaVertical(5, '*'));
+        //System.out.println(Ejercicios.cuadrado(3, '*'));
+        //System.out.println(Ejercicios.trianguloIzquierdo(4, '*'));
+        //System.out.println(Ejercicios.cuadradoHueco(4, '*'));
+        //System.out.println(Ejercicios.triánguloInvertidoIzquierdo(4, '*'));
+        System.out.println(Ejercicios.triánguloDerechoCreciente(3, '*'));
 
     }
+
+    static StringBuilder sb = new StringBuilder();
 
 
     public static int sumaHasta(int n) throws IllegalArgumentException {
@@ -71,4 +85,108 @@ public class Ejercicios {
         }
     }
 
+    public static char desplazarMayuscula(char c, int shift) {
+        shift = (shift > 25) ? shift % 25 : shift;
+        if (c >= 'A' && c < 'Z') {
+            if (Character.isUpperCase(c)) {
+
+                return (char) (c + shift);
+
+            }
+        } else if (c == 'Z') {
+            if (Character.isUpperCase(c)) {
+                c = 'A';
+                return (char) (c + shift - 1);
+            }
+        }
+        return c;
+    }
+
+    public static String pirámideInvertida(int altura, char simbolo) {
+
+
+        for (int i = 0; i < altura; i++) {//filas
+            for (int j = 0; j < i + 1; j++) {//imprimir espacios
+                sb.append(" ");
+                for (int k = 0; k < (2 * altura) - 1; k++) {// imprimir simbolos
+                    sb.append(simbolo);
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static String linea(int n, char simbolo) {
+        for (int i = 0; i < n; i++) {
+            sb.append(simbolo);
+        }
+        return sb.toString();
+    }
+
+    public static String lineaVertical(int n, char simbolo) {
+        for (int i = 0; i < n; i++) {
+            sb.append(simbolo);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static String cuadrado(int tamaño, char simbolo) {
+        for (int i = 0; i < tamaño; i++) { //fila
+            for (int j = 0; j < tamaño; j++) {//columna
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static String trianguloIzquierdo(int altura, char simbolo) {
+        for (int i = 0; i <= altura; i++) { //fila
+            for (int j = 0; j <= i; j++) {//columna, asteriscos
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static String cuadradoHueco(int ancho, char simbolo) {
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < ancho; j++) {
+                if (i == 0 || i == ancho - 1 || j == 0 || j == ancho - 1) {
+                    sb.append(simbolo);
+                } else {
+                    sb.append(" ");
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static String triánguloInvertidoIzquierdo(int altura, char simbolo) {
+        for (int fila = altura; fila > 0 ; fila--) {
+            for (int columna = 0; columna < fila ; columna++) {
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+
+    }
+
+    public static StringBuilder triánguloDerechoCreciente(int altura, char simbolo) {
+        for (int fila = 1; fila <= altura; fila++) {//filas
+            for (int espacio = 1; espacio <= altura - fila; espacio++) {//espacios
+                sb.append(" ");
+            }
+            for (int asterisco = 1; asterisco <= fila; asterisco++) {//asteriscos
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb;
+    }
 }
