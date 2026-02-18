@@ -34,7 +34,9 @@ public class Ejercicios {
         //System.out.println(Ejercicios.trianguloIzquierdo(4, '*'));
         //System.out.println(Ejercicios.cuadradoHueco(4, '*'));
         //System.out.println(Ejercicios.triánguloInvertidoIzquierdo(4, '*'));
-        System.out.println(Ejercicios.triánguloDerechoCreciente(3, '*'));
+        //System.out.println(Ejercicios.triánguloDerechoCreciente(3, '*'));
+        //System.out.println(Ejercicios.triángulo(4, '*'));
+        System.out.println(Ejercicios.diamante(4, '*'));
 
     }
 
@@ -174,7 +176,6 @@ public class Ejercicios {
             sb.append("\n");
         }
         return sb.toString();
-
     }
 
     public static StringBuilder triánguloDerechoCreciente(int altura, char simbolo) {
@@ -183,6 +184,45 @@ public class Ejercicios {
                 sb.append(" ");
             }
             for (int asterisco = 1; asterisco <= fila; asterisco++) {//asteriscos
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb;
+    }
+    public static StringBuilder triángulo(int altura, char simbolo) {
+
+        for (int fila = 1; fila <=altura ; fila++) {
+
+            for (int espacio = 1; espacio <=altura-fila ; espacio++) {
+                sb.append(" ");
+            }
+            for (int asterisco = 1; asterisco <=(fila*2)-1 ; asterisco++) {
+                sb.append(simbolo);
+            }
+            sb.append("\n");
+        }
+        return sb;
+    }
+
+    public static StringBuilder diamante(int altura, char simbolo) {
+        for (int fila = 1; fila <=altura ; fila++) {
+
+            for (int espacios = 1; espacios <=altura-fila ; espacios++) {
+                sb.append(" ");
+            }
+            for (int asteriscos = 1; asteriscos <=(fila*2)-1 ; asteriscos++) {
+                sb.append("*");
+            }
+            sb.append("\n");
+        }
+
+        for (int fila = altura-1; fila >= 1 ; fila--) {
+
+            for (int espacio = 1; espacio <=altura-fila ; espacio++) {
+                sb.append(" ");
+            }
+            for (int asterisco = 1; asterisco <=(fila*2)-1 ; asterisco++) {
                 sb.append(simbolo);
             }
             sb.append("\n");
