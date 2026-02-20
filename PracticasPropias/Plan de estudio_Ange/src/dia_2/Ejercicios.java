@@ -229,4 +229,16 @@ public class Ejercicios {
         }
         return sb;
     }
+
+    int[][] matriz =
+            {{1, 2, 3, 4},// fila 0
+                    {5, 3, 6, 7},//fila 1
+                    {3, 6, 8, 7},//fila 2
+            };
+
+    public static void recorerrMatriz(){
+
+
+    }
+
 }
