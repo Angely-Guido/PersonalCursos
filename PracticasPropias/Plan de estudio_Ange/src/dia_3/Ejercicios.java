@@ -1,15 +1,24 @@
 package dia_3;
 
+import java.util.Arrays;
+
 public class Ejercicios {
     public static void main(String[] args) {
         int [] unos = {1,1,1,0,1,1};
         int [][] sumaMatrices = {{1,2,3,4},
                                  {5,6,7,8},
                                  {9,1,2,3}};
+        int[] vector = {1,2,3,5};
 
         //System.out.println(rachaDeUnos(unos));
         //System.out.println(detectorDeAnagramas("roma", "amor"));
         //System.out.println(sumaDeMarco(sumaMatrices));
+        //System.out.println(laFilaMasPesada(sumaMatrices));
+        System.out.println("Antes: " + Arrays.toString(vector));
+        rotacionAladerecha(vector);
+        System.out.println("Después: " + Arrays.toString(vector));
+
+
     }
 
     public static int rachaDeUnos(int[] vector) {
@@ -60,5 +69,44 @@ public class Ejercicios {
             }
         }
         return sumaMatriz;
+    }
+
+    public static int laFilaMasPesada(int[][] matriz) {
+        int sumaMatriz = 0;
+        int SumaFilaMayor = 0;
+        int filaMayor = 0;
+
+        for (int fila = 0; fila < matriz.length; fila++) {
+            for (int columna = 0; columna < matriz[fila].length; columna++) {
+                sumaMatriz = sumaMatriz + matriz[fila][columna];
+            }
+            if (sumaMatriz > SumaFilaMayor) {
+                SumaFilaMayor = sumaMatriz;
+                sumaMatriz = 0;
+                filaMayor = fila;
+            }
+        }
+        return filaMayor;
+    }
+
+    public static int elNumeroFaltante(int [] vector){
+        int sumaTotal = 0;
+        int sumaPosible = 0;
+        for (int i = 0; i < vector.length ; i++) {
+            sumaTotal = sumaTotal + vector[i];
+
+        }
+        sumaPosible = (vector.length + 1) * (vector.length + 2) / 2;
+        return sumaPosible - sumaTotal;
+
+    }
+
+    public static void rotacionAladerecha(int [] vector){
+        int ultima = vector[vector.length-1];
+        for (int i = vector.length-1; i > 0 ; i--) {
+            vector[i] = vector[i-1];
+
+        }
+        vector[0] = ultima;
     }
 }
